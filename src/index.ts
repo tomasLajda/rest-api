@@ -5,6 +5,7 @@ import cors from 'cors';
 import express from 'express';
 import http from 'http';
 import mongoose from 'mongoose';
+import router from './router';
 
 const app = express();
 
@@ -30,3 +31,5 @@ const mongoUrl =
 mongoose.Promise = Promise;
 mongoose.connect(mongoUrl);
 mongoose.connection.on('error', (error: Error) => console.log(error));
+
+app.use('/', router());
